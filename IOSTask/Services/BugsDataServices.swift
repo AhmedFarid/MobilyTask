@@ -1,5 +1,5 @@
 //
-//  BugsDataServies.swift
+//  BugsDataServices.swift
 //  IOSTask
 //
 //  Created by Farido on 15/09/2024.
@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class BugsDataServies {
+class BugsDataServices {
     private let container: NSPersistentContainer
     private let containerName: String = "BugsContainer"
     private let entityName: String = "BugsEntity"
@@ -26,9 +26,9 @@ class BugsDataServies {
         }
     }
 
-    func updatePortfolio(bug: BugsModel) {
+    func updateBug(bug: BugsModel, isDelete: Bool) {
         if let entity = savedEntities.first(where: {$0.id == bug.id}) {
-            if entity.id != nil {
+            if isDelete == false {
                 update(entity: entity, bug: bug)
             } else {
                 delete(entity: entity)
@@ -42,6 +42,7 @@ class BugsDataServies {
         let request = NSFetchRequest<BugsEntity>(entityName: entityName)
         do {
             savedEntities = try container.viewContext.fetch(request)
+            print(savedEntities)
         } catch let error {
             print("Error fetching Portfolio Data! \(error)")
         }

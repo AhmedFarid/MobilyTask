@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct BugsModel: Identifiable {
+    var id = UUID().uuidString
+    var bugTitle: String
+    var bugDesc: String
+    var bugImage: Data
+}

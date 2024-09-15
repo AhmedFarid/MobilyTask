@@ -37,7 +37,9 @@ class HomeViewModel: ObservableObject {
             }
     }
 
-    func updateBug(bug: BugsModel) {
-        bugsDataServices.updateBug(bug: bug)
+    func updateBug(bug: BugsModel, isDelete: Bool) {
+        bugsDataServices.updateBug(bug: bug, isDelete: isDelete)
     }
+
+    
 }
